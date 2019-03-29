@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ETF_Pocket Soccer</string>
+
+    <string-array name="names">
+        <item>Captain America</item>
+        <item>Iron Man</item>
+        <item>Logan</item>
+        <item>Spiderman</item>
+        <item>Cyclops</item>
+        <item>Daredevil</item>
+        <item>Deadpool</item>
+    </string-array>
+
+    <string-array name="fields">
+        <item>Grass</item>
+        <item>Concrete</item>
+        <item>Clay</item>
+        <item>Wood</item>
+    </string-array>
+</resources>

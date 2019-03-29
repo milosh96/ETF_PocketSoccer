@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/football_field2"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+
+    <Button
+        android:onClick="resumeClicked"
+        android:layout_marginTop="20dp"
+        android:text="CONTINUE PLAYING"
+        android:textColor="@color/colorGrey"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/round_button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:id="@+id/resume_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="newClicked"
+        android:layout_marginTop="20dp"
+        android:text="NEW GAME"
+        android:textColor="@color/colorGrey"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/round_button"
+        app:layout_constraintTop_toBottomOf="@id/resume_btn"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:id="@+id/new_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="tableClicked"
+        android:layout_marginTop="20dp"
+        android:text="TABLE"
+        android:textColor="@color/colorGrey"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/round_button"
+        app:layout_constraintTop_toBottomOf="@id/new_btn"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:id="@+id/table_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="paramClicked"
+        android:layout_marginTop="20dp"
+        android:text="SETTINGS"
+        android:textColor="@color/colorGrey"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/round_button"
+        app:layout_constraintTop_toBottomOf="@id/table_btn"
+        android:layout_margin="30dp"
+        android:padding="15dp"
+        android:id="@+id/param_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" />
+
+</android.support.constraint.ConstraintLayout>
