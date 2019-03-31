@@ -19,6 +19,8 @@ public class Ball extends GameObject {
         this.ball=image;
         imgX=x;
         imgY=y;
+        this.x=x+GamePanel.BALL_SIZE/2;
+        this.y=y+GamePanel.BALL_SIZE/2;
     }
 
 

@@ -20,6 +20,7 @@ public class Player extends GameObject {
     private int imgX;
     private int imgY;
 
+
     public Player(int x, int y, int r, Bitmap image,Paint regular,Paint paintSelected,Paint paintActive) {
         super(x, y, r);
         active=false;
@@ -50,6 +51,101 @@ public class Player extends GameObject {
 
     public void update(){
         //podesavanje kretanja
+        if(dx!=0||dy!=0) {
+            x += dx;
+            y += dy;
+            imgY += dy;
+            imgX += dx;
+
+            //provera za granice?
+
+            if (dx > 0) {
+                dx -= 1;
+                if (dx <= 0) {
+                    dx = 0;
+                }
+            } else if (dx < 0) {
+                dx += 1;
+                if (dx >= 0) {
+                    dx = 0;
+                }
+            }
+            if (dy > 0) {
+                dy -= 1;
+                if (dy < 0) {
+                    dy = 0;
+                }
+            } else if (dy < 0) {
+                dy += 1;
+                if (dy > 0) {
+                    dy = 0;
+                }
+            }
+
+            //sirina i visina
+
+            if (x - r <= 20) {
+                dx *= -1;
+            }
+            if (x + r >= GamePanel.WIDTH) {
+                dx *= -1;
+            }
+
+            if (y - r <= 20) {
+                dy *= -1;
+            }
+            if (y + r >= GamePanel.HEIGHT) {
+                dy *= -1;
+            }
+
+            //check collisions
+            for(Player player:GamePanel.player1){
+                if(player!=this){
+                   if(player.collision(this)){
+                       //bolja varijanta
+//                       player.setDx(dx);
+//                       player.setDy(dy);
+//
+//                       //sebe promeni?
+//                       dx*=-1;
+//                       dy*=-1;
+                       int new_dx=player.getDx();
+                       int new_dy=player.getDy();
+                       player.setDx(dx);
+                       player.setDy(dy);
+                       setDx(new_dx);
+                       setDy(new_dy);
+                   }
+                }
+            }
+
+            for(Player player:GamePanel.player2){
+                if(player!=this){
+                    if(player.collision(this)){
+//                        player.setDx(dx/2);
+//                        player.setDy(dy/2);
+//
+//                        //sebe promeni?
+//                        dx*=-1;
+//                        dy*=-1;
+                        int new_dx=player.getDx();
+                        int new_dy=player.getDy();
+                        player.setDx(dx);
+                        player.setDy(dy);
+                        setDx(new_dx);
+                        setDy(new_dy);
+                    }
+                }
+            }
+            //lopta
+            if(GamePanel.ball.collision(this)){
+                GamePanel.ball.setDx(dx);
+                GamePanel.ball.setDy(dy);
+
+                dx*=-1;
+                dy*=-1;
+            }
+        }
     }
 
     public void draw(Canvas canvas){

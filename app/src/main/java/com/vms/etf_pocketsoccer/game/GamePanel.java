@@ -32,9 +32,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     Paint paintScore;
 
     //width and height
-    private static int WIDTH=800;
-    private static int HEIGHT=480;
-    private static final int BALL_SIZE=150;
+    public static int WIDTH=800;
+    public static int HEIGHT=480;
+    public static final int BALL_SIZE=150;
     private float scaleX;
     private float scaleY;
 
@@ -52,11 +52,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private Background goals;
 
     //2 liste od 3 elem
-    private List<Player> player1=new ArrayList<>(3);
-    private List<Player> player2=new ArrayList<>(3);
+    public static List<Player> player1=new ArrayList<>(3);
+    public static List<Player> player2=new ArrayList<>(3);
 
     //lopta
-    private Ball ball;
+    public static Ball ball;
 
     //SCORE
     private int goals_1=0;
@@ -94,9 +94,16 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         gameThread=new GameThread(this,getHolder());
     }
 
+    public Ball getBall() {
+        return ball;
+    }
+
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         //main code
+
+        player1.clear();
+        player2.clear();
 
         //background
 
@@ -235,7 +242,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         ball=new Ball(WIDTH/2-BALL_SIZE/2,HEIGHT/2-BALL_SIZE/2,0,ballImg);
 
 
-        logic=new Logic(this);
+        logic=new Logic(this,this.speed);
 
         //thread
         gameThread.setRun(true);
@@ -274,6 +281,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                 if(turn==1){
                     for(Player player:player1){
                         if(player.pointInside(x,y)){
+                            //sacuvaj igraca
+                            logic.addSelected(1,player);
                             break;
                         }
                     }
@@ -281,6 +290,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                 else{
                     for(Player player:player2){
                         if(player.pointInside(x,y)){
+                            logic.addSelected(2,player);
                             break;
                         }
                     }
@@ -289,10 +299,16 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             }
             case MotionEvent.ACTION_UP:{
                 //kako proveriti za vreme
+                float x=event.getX()/scaleX;
+                float y=event.getY()/scaleY;
+                Log.d("POINT_UP","X: "+x+". Y: "+y);
+
+                logic.moveSelected(turn,x,y);
                 break;
             }
         }
-        return super.onTouchEvent(event);
+        return true;
+        //return super.onTouchEvent(event);
     }
 
 

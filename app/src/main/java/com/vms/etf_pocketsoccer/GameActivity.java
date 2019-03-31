@@ -9,12 +9,13 @@ import com.vms.etf_pocketsoccer.game.GamePanel;
 public class GameActivity extends AppCompatActivity {
 
     private SharedPreferences preferences;
+    private static final String PREF="Params";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //PARAMS FOR PLAYING
-        preferences=getPreferences(MODE_PRIVATE);
+        preferences=getSharedPreferences(PREF,MODE_PRIVATE);
 
 
         int speed=preferences.getInt("speed",0);

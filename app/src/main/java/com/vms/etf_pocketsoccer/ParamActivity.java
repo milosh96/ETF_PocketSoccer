@@ -25,6 +25,7 @@ public class ParamActivity extends AppCompatActivity {
     private int selectedItem=0;
 
     private SharedPreferences preferences;
+    private static final String PREF="Params";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class ParamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_param);
 
 
-        preferences=getPreferences(MODE_PRIVATE);
+        preferences=getSharedPreferences(PREF,MODE_PRIVATE);
 
 
         int speed=preferences.getInt("speed",0);

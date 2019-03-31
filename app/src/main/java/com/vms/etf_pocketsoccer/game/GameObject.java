@@ -2,12 +2,12 @@ package com.vms.etf_pocketsoccer.game;
 
 public abstract class GameObject {
 
-    private int x;
-    private int y;
-    private int r;
+    protected int x;
+    protected int y;
+    protected int r;
 
-    private int dx;
-    private int dy;
+    protected int dx;
+    protected int dy;
 
     public GameObject(int x, int y, int r) {
         this.x = x;
@@ -59,10 +59,10 @@ public abstract class GameObject {
         double distance=centerDistance(this.x,this.y,otherObj.getX(),otherObj.getY());
 
         if(distance<= this.r+otherObj.getR()){
-            return false;
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 
