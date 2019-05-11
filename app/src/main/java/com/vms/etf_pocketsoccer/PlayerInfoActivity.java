@@ -27,16 +27,38 @@ public class PlayerInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_player_info);
 
         Bundle bundle=getIntent().getExtras();
+        model=ViewModelProviders.of(this).get(MyViewModel.class);
+        int db=0;
+        int victor=0;
 
         if(bundle!=null){
             name1=bundle.getString("PLAYER_NAME1","Milos");
             name2=bundle.getString("PLAYER_NAME2","Milos");
+            db=bundle.getInt("DB",0);
+            if(db==1){
+                //upisi u bazu
+                victor=bundle.getInt("VICTOR",0);
+            }
         }
 
-        model=ViewModelProviders.of(this).get(MyViewModel.class);
 
         Player player1=model.findPlayer(name1);
         Player player2=model.findPlayer(name2);
+        if(player1==null){
+            model.insertPlayer(name1);
+            player1=model.findPlayer(name1);
+        }
+        if(player2==null){
+            model.insertPlayer(name2);
+            player2=model.findPlayer(name2);
+        }
+        if(db==1){
+            //rep se brine za dodavanje broja pobeda
+            model.insertGame(name1,name2,victor);
+            //da bi dohvatio azurne vrednosti za broj pobeda
+            player1=model.findPlayer(name1);
+            player2=model.findPlayer(name2);
+        }
 
         TextView playerName1=findViewById(R.id.player_name1);
 

@@ -56,15 +56,23 @@ public abstract class GameObject {
     }
 
     public boolean collision(GameObject otherObj){
+
+        if((dx==0 && dy==0)&&(otherObj.getDx()==0 && otherObj.getDy()==0)){
+            return false;
+        }
+
         double distance=centerDistance(this.x,this.y,otherObj.getX(),otherObj.getY());
 
-        if(distance<= this.r+otherObj.getR()){
+        //2 dodato kao
+        if(distance<= this.r+otherObj.getR()+10){
             return true;
         }
         else {
             return false;
         }
     }
+
+    public abstract int getMass();
 
     public double centerDistance(int x1, int y1,int x2, int y2){
         int xSqr=(int)Math.pow(x1-x2,2);

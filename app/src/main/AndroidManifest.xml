@@ -24,7 +24,7 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".SetUpActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape" android:noHistory="true"/>
         <activity
             android:name=".StatisticsActivity"
             android:screenOrientation="landscape" />
@@ -34,7 +34,7 @@
         <activity
             android:name=".PlayerInfoActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".GameActivity" android:screenOrientation="landscape" ></activity>
+        <activity android:name=".GameActivity" android:screenOrientation="landscape" android:noHistory="true"></activity>
     </application>
 
 </manifest>

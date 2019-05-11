@@ -47,18 +47,22 @@ public class GameActivity extends AppCompatActivity {
         int flag1=0;
         int flag2=0;
 
+        boolean pref=false;
+
         if(bundle!=null){
-            name1=bundle.getString("PLAYER1_NAME");
-            name2=bundle.getString("PLAYER2_NAME");
+            name1=bundle.getString("PLAYER1_NAME","");
+            name2=bundle.getString("PLAYER2_NAME","");
 
-            ai1=bundle.getBoolean("PLAYER1_AI");
-            ai2=bundle.getBoolean("PLAYER2_AI");
+            ai1=bundle.getBoolean("PLAYER1_AI",false);
+            ai2=bundle.getBoolean("PLAYER2_AI",false);
 
-            flag1=bundle.getInt("PLAYER1_FLAG");
-            flag2=bundle.getInt("PLAYER2_FLAG");
+            flag1=bundle.getInt("PLAYER1_FLAG",0);
+            flag2=bundle.getInt("PLAYER2_FLAG",0);
+
+            pref=bundle.getBoolean("CONTINUE",false);
         }
 
-        setContentView(new GamePanel(this,name1,name2,ai1,ai2,flag1,flag2,speed,condition,field));
+        setContentView(new GamePanel(this,name1,name2,ai1,ai2,flag1,flag2,speed,condition,field,pref));
     }
 
     @Override

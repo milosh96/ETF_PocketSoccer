@@ -181,4 +181,18 @@ public class ParamActivity extends AppCompatActivity {
         setResult(RESULT_CANCELED,intent);
         finish();
     }
+
+    public void resetClicked(View view) {
+
+        SharedPreferences.Editor editor=preferences.edit();
+        editor.remove("field");
+        editor.remove("speed");
+        editor.remove("condition");
+
+        editor.commit();
+
+        Intent intent=new Intent();
+        setResult(RESULT_OK,intent);
+        finish();
+    }
 }

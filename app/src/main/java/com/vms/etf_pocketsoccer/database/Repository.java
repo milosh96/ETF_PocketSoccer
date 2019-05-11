@@ -53,6 +53,12 @@ public class Repository {
         Game game=new Game(user_1,user_2,victor,timestamp);
 
         inFootballDB.gameDAO().insertGame(game);
+        if(victor==1){
+            inFootballDB.playerDAO().addWin(user_1);
+        }
+        else if(victor==2){
+            inFootballDB.playerDAO().addWin(user_2);
+        }
     }
 
     public List<Game> getAllGames(){

@@ -43,8 +43,11 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerGHol
 
         if(game.getVictor()==1){
             playerGHolder.victor.setText(game.getName_1());
-        }else{
+        }else if(game.getVictor()==2){
             playerGHolder.victor.setText(game.getName_2());
+        }
+        else{
+            playerGHolder.victor.setText("Tie");
         }
     }
 

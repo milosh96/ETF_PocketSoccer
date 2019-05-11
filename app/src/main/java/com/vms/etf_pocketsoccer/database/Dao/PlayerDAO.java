@@ -26,4 +26,7 @@ public interface PlayerDAO {
 
     @Query("UPDATE player_table SET wins=0")
     void resetAll();
+
+    @Query("UPDATE player_table SET wins=wins+1 WHERE name LIKE :name")
+    void addWin(String name);
 }
